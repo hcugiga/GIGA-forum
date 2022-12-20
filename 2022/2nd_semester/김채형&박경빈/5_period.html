@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>진자의 주기</title>
+    <script>
+        function calc(){
+            var L = document.getElementById("L").value;
+            var pi = Math.PI;
+            var G = Math.sqrt(parseFloat(L)/9.81);
+            var tot = 2*pi*parseFloat(G);
+            var result = tot.toFixed(3);
+            document.getElementById("sum").value = result;
+        }
+    </script>
+    <style>
+        @keyframes animation{
+            from{
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+        }
+        body{
+            text-align: center;
+            background-color: #F5F6F6;
+        }
+        img{
+            animation: animation 3s forwards;
+        }
+        @media screen and (max-width: 480px){
+            body{
+                font-size: 10px;
+            }
+            img{
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="image/5.jpg" width="60%"><img>
+    <h3>- 진자의 길이에 따른 진자의 주기 구해보기 -</h3>
+    <form name="myform">
+        진자의 길이(m):
+        <input type="text" id="L" size="5">
+        <input type="button" value="계산하기" onclick="calc();">
+        주기: 
+        <input id="sum" size="5">
+</body>
+</html>

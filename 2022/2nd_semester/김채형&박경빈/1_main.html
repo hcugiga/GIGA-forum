@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+        @import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-pen.css');
+        body{
+            background-color: rgb(183, 183, 183);
+            user-select: none;
+        }
+        header{
+            text-align: center;
+            font-family: 'Abril Fatface', cursive;
+        }
+        main{
+            text-align: center;
+            font-family: 'NanumBarunPen';
+        }
+        img{
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: absolute;
+            z-index: 2;
+        }
+        img:hover{
+            opacity: 0;
+            transition-duration: 0.5s;
+        }
+        .pendulum{
+            font-family: 'Gowun Dodum', sans-serif;
+            font-size: 30px;
+            box-shadow: -3px -3px inset;
+            display: inline-block;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            box-sizing: border-box;
+            border-style: none;
+            background-color: white;
+            text-align: center;
+            padding-top: 102px;
+            position: relative;
+            z-index: 1;
+        }
+        .click{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <p style="font-size: 100px; margin-bottom: 0%;">PHYSICS</p>
+        <p style="font-size: 30px; margin-top: 0%; color: rgb(86, 86, 86);">all about simple pendulum</p>
+    </header>
+    <main>
+        <h4>- 10509 박경빈 & 10608 김채형 -</h4>
+        <a href="2_index.html"><img src="image/simple pendulum.gif" alt="단진자 운동"></a>
+        <div class="pendulum">단진자 운동</div>
+        <div class="click">CLICK TO START</div>
+    </main>
+    <footer></footer>
+</body>
+</html>

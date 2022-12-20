@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>역학적 에너지 보존</title>
+    <style>
+      body {
+        text-align: center;
+        background-color: #f5f6f6;
+      }
+      video {
+        width: 50%;
+      }
+      @media screen and (max-width: 480px) {
+        video {
+          width: 70%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>역학적 에너지 보존</h2>
+    <video autoplay loop muted src="image/역학적 에너지.mp4"></video>
+    <div>
+      <div
+        class="colorscripter-code"
+        style="
+          display: inline-block;
+          color: #f0f0f0;
+          font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;
+          position: relative !important;
+          overflow: auto;
+        "
+      >
+        <table
+          class="colorscripter-code-table"
+          style="margin: 0; padding: 0; border: none; background-color: #272727; border-radius: 4px"
+          cellspacing="0"
+          cellpadding="0"
+        >
+          <tr>
+            <td style="padding: 6px; border-right: 2px solid #4f4f4f">
+              <div
+                style="
+                  margin: 0;
+                  padding: 0;
+                  word-break: normal;
+                  text-align: right;
+                  color: #aaa;
+                  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;
+                  line-height: 130%;
+                "
+              >
+                <div style="line-height: 130%">1</div>
+                <div style="line-height: 130%">2</div>
+                <div style="line-height: 130%">3</div>
+                <div style="line-height: 130%">4</div>
+                <div style="line-height: 130%">5</div>
+                <div style="line-height: 130%">6</div>
+                <div style="line-height: 130%">7</div>
+                <div style="line-height: 130%">8</div>
+                <div style="line-height: 130%">9</div>
+                <div style="line-height: 130%">10</div>
+                <div style="line-height: 130%">11</div>
+                <div style="line-height: 130%">12</div>
+                <div style="line-height: 130%">13</div>
+                <div style="line-height: 130%">14</div>
+                <div style="line-height: 130%">15</div>
+                <div style="line-height: 130%">16</div>
+                <div style="line-height: 130%">17</div>
+                <div style="line-height: 130%">18</div>
+                <div style="line-height: 130%">19</div>
+                <div style="line-height: 130%">20</div>
+                <div style="line-height: 130%">21</div>
+                <div style="line-height: 130%">22</div>
+                <div style="line-height: 130%">23</div>
+                <div style="line-height: 130%">24</div>
+                <div style="line-height: 130%">25</div>
+                <div style="line-height: 130%">26</div>
+                <div style="line-height: 130%">27</div>
+                <div style="line-height: 130%">28</div>
+                <div style="line-height: 130%">29</div>
+                <div style="line-height: 130%">30</div>
+                <div style="line-height: 130%">31</div>
+              </div>
+            </td>
+            <td style="padding: 6px 0; text-align: left">
+              <div
+                style="
+                  margin: 0;
+                  padding: 0;
+                  color: #f0f0f0;
+                  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;
+                  line-height: 130%;
+                "
+              >
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  <span style="color: #ff3399">import</span>&nbsp;numpy&nbsp;<span
+                    style="color: #ff3399"
+                    >as</span
+                  >&nbsp;np
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  <span style="color: #ff3399">import</span>&nbsp;matplotlib.pylab&nbsp;<span
+                    style="color: #ff3399"
+                    >as</span
+                  >&nbsp;plt
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  <span style="color: #ff3399">from</span>&nbsp;matplotlib.animation&nbsp;<span
+                    style="color: #ff3399"
+                    >import</span
+                  >&nbsp;FuncAnimation
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  <span style="color: #ff3399">import</span>&nbsp;matplotlib.animation&nbsp;<span
+                    style="color: #ff3399"
+                    >as</span
+                  >&nbsp;animation
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">&nbsp;</div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  fig&nbsp;<span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">=</span>&nbsp;plt.figure()
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  ax&nbsp;<span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">=</span>&nbsp;plt.axes(xlim<span
+                    style="color: #0086b3"
+                  ></span
+                  ><span style="color: #ff3399">=</span>(<span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">-</span
+                  ><span style="color: #c10aff">4</span>,&nbsp;<span style="color: #c10aff">4</span
+                  >),&nbsp;ylim<span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">=</span>(<span style="color: #c10aff">0</span
+                  >,&nbsp;<span style="color: #c10aff">16</span>))
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">&nbsp;</div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  x&nbsp;<span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">=</span>&nbsp;np.arange(<span
+                    style="color: #0086b3"
+                  ></span
+                  ><span style="color: #ff3399">-</span><span style="color: #c10aff">4</span>,<span
+                    style="color: #c10aff"
+                    >5</span
+                  >,<span style="color: #c10aff">0.</span><span style="color: #c10aff">1</span>)
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  ax.plot(x,x<span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">*</span><span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">*</span><span style="color: #c10aff">2</span>)
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  ax.plot(x,<span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">-</span>x<span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">*</span><span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">*</span><span style="color: #c10aff">2</span
+                  ><span style="color: #ff3399">+</span><span style="color: #c10aff">16</span>)
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  plt.title(<span style="color: #ffd500">'Mechanical&nbsp;Energy'</span>)
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  plt.axis(<span style="color: #ffd500">'off'</span>)
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">plt.legend()</div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">&nbsp;</div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  plt.axvline(<span style="color: #c10aff">0</span>,&nbsp;<span
+                    style="color: #c10aff"
+                    >0</span
+                  >,&nbsp;<span style="color: #c10aff">16</span>,&nbsp;color<span
+                    style="color: #0086b3"
+                  ></span
+                  ><span style="color: #ff3399">=</span><span style="color: #ffd500">'gray'</span>)
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  plt.axhline(<span style="color: #c10aff">0</span>,&nbsp;<span
+                    style="color: #0086b3"
+                  ></span
+                  ><span style="color: #ff3399">-</span
+                  ><span style="color: #c10aff">4</span>,&nbsp;<span style="color: #c10aff">4</span
+                  >,&nbsp;color<span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">=</span><span style="color: #ffd500">'gray'</span>)
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  plt.axhline(<span style="color: #c10aff">16</span>,&nbsp;<span
+                    style="color: #0086b3"
+                  ></span
+                  ><span style="color: #ff3399">-</span
+                  ><span style="color: #c10aff">4</span>,&nbsp;<span style="color: #c10aff">4</span
+                  >,&nbsp;color<span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">=</span><span style="color: #ffd500">'gray'</span>)
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">&nbsp;</div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  dot_1,&nbsp;<span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">=</span>&nbsp;plt.plot([],&nbsp;[],&nbsp;<span
+                    style="color: #ffd500"
+                    >'ro'</span
+                  >)
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  dot_2,&nbsp;<span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">=</span>&nbsp;plt.plot([],&nbsp;[],&nbsp;<span
+                    style="color: #ffd500"
+                    >'ro'</span
+                  >)
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">&nbsp;</div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  <span style="color: #ff3399">def</span>&nbsp;animate(frame):
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  &nbsp;&nbsp;&nbsp;&nbsp;dot_1.set_data(frame,&nbsp;frame<span
+                    style="color: #0086b3"
+                  ></span
+                  ><span style="color: #ff3399">*</span><span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">*</span><span style="color: #c10aff">2</span>)
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  &nbsp;&nbsp;&nbsp;&nbsp;dot_2.set_data(frame,&nbsp;<span
+                    style="color: #0086b3"
+                  ></span
+                  ><span style="color: #ff3399">-</span>frame<span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">*</span><span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">*</span><span style="color: #c10aff">2</span
+                  ><span style="color: #ff3399">+</span><span style="color: #c10aff">16</span>)
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff3399">return</span>&nbsp;dot_1
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">&nbsp;</div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">
+                  ani&nbsp;<span style="color: #0086b3"></span
+                  ><span style="color: #ff3399">=</span
+                  >&nbsp;FuncAnimation(fig,&nbsp;animate,&nbsp;frames<span
+                    style="color: #0086b3"
+                  ></span
+                  ><span style="color: #ff3399">=</span>np.arange(<span
+                    style="color: #0086b3"
+                  ></span
+                  ><span style="color: #ff3399">-</span
+                  ><span style="color: #c10aff">4</span>,&nbsp;<span style="color: #c10aff">4</span
+                  >,&nbsp;<span style="color: #c10aff">0.</span
+                  ><span style="color: #c10aff">01</span>),&nbsp;interval<span
+                    style="color: #0086b3"
+                  ></span
+                  ><span style="color: #ff3399">=</span><span style="color: #c10aff">5</span>)
+                </div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">&nbsp;</div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">plt.show()</div>
+                <div style="padding: 0 6px; white-space: pre; line-height: 130%">&nbsp;</div>
+              </div>
+              <div
+                style="
+                  text-align: right;
+                  margin-top: -13px;
+                  margin-right: 5px;
+                  font-size: 9px;
+                  font-style: italic;
+                "
+              >
+                <a
+                  href="http://colorscripter.com/info#e"
+                  target="_blank"
+                  style="color: #4f4f4f; text-decoration: none"
+                  >Colored by Color Scripter</a
+                >
+              </div>
+            </td>
+            <td style="vertical-align: bottom; padding: 0 2px 4px 0">
+              <a
+                href="http://colorscripter.com/info#e"
+                target="_blank"
+                style="text-decoration: none; color: white"
+                ><span
+                  style="
+                    font-size: 9px;
+                    word-break: normal;
+                    background-color: #4f4f4f;
+                    color: white;
+                    border-radius: 10px;
+                    padding: 1px;
+                  "
+                  >cs</span
+                ></a
+              >
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="kr" style="background-color: aqua;">
+<head>
+    <meta charset="UTF-8">
+    <title>10330 하석현</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="../logo/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="../logo/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="../logo/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../logo/apple-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="../logo/apple-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="../logo/apple-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="../logo/apple-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="../logo/apple-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../logo/apple-icon-180x180.png" />
+    <link rel="icon" type="../logo/png" sizes="192x192" href="../logo/android-icon-192x192.png" />
+    <link rel="icon" type="../logo/png" sizes="32x32" href="../logo/favicon-32x32.png" />
+    <link rel="icon" type="../logo/png" sizes="96x96" href="../logo/favicon-96x96.png" />
+    <link rel="icon" type="../logo/png" sizes="16x16" href="../logo/favicon-16x16.png" />
+    <link rel="manifest" href="../logo/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-Tilelogo" content="../logo/ms-icon-144x144.png" />
+
+    <style>
+        @keyframes moveRight{
+            from{
+                left: 2%;
+            }
+            to{
+                left: 98%;
+            }
+        }
+        @keyframes moveUpDown {
+            from{
+                top: 2%;
+                transform: scale(1, 1);
+            } 11%{
+                top: 83%;
+                transform: scale(0.8, 0.75);
+            } 22%{
+                top: 25%;
+                transform: scale(1, 1);
+            } 33%{
+                top: 83%;
+                transform: scale(0.8, 0.75);
+            } 44%{
+                top: 40%;
+                transform: scale(1, 1);
+            } 55%{
+                top: 83%;
+                transform: scale(0.8, 0.75);
+            } 66%{
+                top: 60%;
+                transform: scale(1, 1);
+            } 77%{
+                top: 83%;
+                transform: scale(0.8, 0.75);
+            } 88%{
+                top: 70%;
+                transform: scale(1, 1);
+            } to{
+                top: 83%;
+                transform: scale(0.8, 0.75);
+            }
+        }
+        @keyframes scale{
+            from{
+                transform: scale(1, 1);
+            } to{
+                transform: scale(1.5, 1.5);
+            }
+        }
+        #rectanguler{
+            position: fixed;
+
+            width: 8vw;
+            height: 8vw;    
+            border-radius: 50%;
+            opacity: 20%;
+            background-color: blue;
+
+            animation:
+            moveRight 10s linear infinite,
+            moveUpDown 10s ease-in-out infinite;
+
+        }
+        #rectanguler:hover{
+            animation: 
+            moveRight 10s linear infinite,
+            moveUpDown 10s ease-in-out infinite,
+            scale 0.5s;
+        }
+        .bt{
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .bt2{
+            position: absolute;
+            top: 50px;
+            left: 20px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <span class="bt"><a href="하석현_code2.html"><button>코드 보기</button></a> 10330 하석현</span>
+    <span class="bt2"><a href="하석현_1.html"><button>이전</button></a>&nbsp;&nbsp;<a href="하석현_3.html"><button>다음</button></a></span>
+    <a href="하석현_3.html"><div id="rectanguler"></div></a>
+</body>
+</html>
