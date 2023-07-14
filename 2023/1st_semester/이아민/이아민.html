@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@600&display=swap');
+        body {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+            background-image : url('start1.jpg');
+            background-size : cover;
+            background-repeat : no-repeat;
+            margin : 0;
+            font-size : xx-large;
+            text-align : center;
+            user-select : none;
+        }
+        .button {
+            width: 300px;
+            height: 100px;
+            background-color:rgb(0, 162, 255);
+            color: white;
+            box-shadow: 0 5px rgb(0, 67, 150);
+            font-size: 60px;
+            font-family: 'IBM Plex Sans KR', sans-serif;
+            border-radius: 25px;
+            position: absolute;
+            text-align: center;
+            margin: 0 auto;
+            top: 40%;
+            left: 41%;
+            transition-duration: 0.3s;
+            animation: animation 1s ease-out;
+            animation-fill-mode: forwards;
+        }
+        .button:hover {
+            box-shadow: 0px 0px;
+            box-shadow: 0, 0;
+            transform: translate(0,10px);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>이스터에그 찾기</h1>
+    <div class="button" onclick="window.open('find.html',',')">시작하기</div>
+</body>
+</html>

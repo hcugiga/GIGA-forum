@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FindEasterEgg</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@600&display=swap');
+        body {
+            font-family: 'IBM Plex Sans KR', sans-serif;
+            background-image: url(street1.jpg);
+            background-size : cover;
+            background-repeat : no-repeat;
+            font-size: medium;
+            color: rgb(220, 255, 238);
+            text-align:right;
+            user-select: none;
+        }
+        .easter {
+            width: 5px;
+            height: 5px;
+            padding: 5px 5px;
+            top:75%;
+            left:70%;
+            position:absolute;
+            background-color: rgb(0, 0, 0);
+        }
+        .easter:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>마우스커서가 바뀌는 곳을 찾아보세요!</h1>
+    <div class="easter" onclick="window.open('easteregg.html',',')"></div>
+</body>
+</html>
