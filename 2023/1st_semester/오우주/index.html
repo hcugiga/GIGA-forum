@@ -1,0 +1,954 @@
+<!-- 언젠간 웹진을 개발할지도 모르는 어떤 코딩러가 제작한 매우 놀라운 사이트 와아아아ㅏ아아아아ㅏㅇ. 현재 시각은 2023-06-25 새벽 3:00입니다. 밤새 작업해서 만든 결과물이니 버그 있더라도 너그럽게 봐주시면 감사하겠습니다. 님들 공부 ㅎㅇㅌ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/x-icon" href="./hospital.png">
+  <title>HCU_NEW_자가진단_시스템</title>
+  <style>
+    .animated-title {font-size:20px; font-family:'Raleway',Sans-serif; font-weight:50; position: relative; width: 100%;max-width:100%; height: auto; padding:100px 0; overflow-x: hidden; overflow-y: hidden; }
+    .animated-title .track {position: absolute; white-space: nowrap;will-change: transform;animation: marquee 30s linear infinite; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @media (hover: hover) and (min-width: 700px){
+    .animated-title .content {-webkit-transform: translateY(calc(100% - 8rem)); transform: translateY(calc(100% - 8rem));}
+        }
+
+    header {
+     text-align: center;
+     /* height: 17vh; */
+     padding-top: 10px;
+     font-family: "Malgun Gothic", cursive;
+    }
+
+    .scene {
+      width: 1460px;
+      height: 2030px;
+      background-image: url("./배경.png.jpg");
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .button {
+      margin-top: 20px;
+    }
+
+    .scene1 {
+      display: block;
+    }
+
+    .scene2 {
+      display: none;
+    }
+
+    .answer {
+    width: 80px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #e0e0e0;
+    color: #333;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .answer:hover {
+    background-color: #ccc;
+  }
+
+  .answer-button {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    cursor: pointer;
+  }
+
+  .answer-button:hover {
+    background-color: #e6e6e6;
+  }
+
+  .answer-button.active {
+    background-color: #3498db;
+    color: #fff;
+  }
+
+  .buttonchecks1 {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #9be8a5;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .buttonchecks2 {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #fc6060;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .buttonchecks1:hover {
+    background-color: #42893a;
+  }
+  .buttonchecks2:hover {
+    background-color: #d52323;
+  }
+
+  .buttonback {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #a6a6a6;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .buttonback:hover {
+    background-color: #3333337e;
+  }
+
+  .buttondone {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #259320;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .buttondone:hover {
+    background-color: #08511abc;
+  }
+  #message {
+    font-size: 14px; /* 작은 크기로 설정 */
+    color:#d52323;
+  }
+  </style>
+</head>
+<body>
+  <!-- 장면1 메인 부분 -->
+  <div id="scene1" class="scene scene1">
+    <header>
+      <h2>
+        <img src="./HCU.png" alt="Image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; margin-right: 10px;">
+        HCU 자가진단
+      </h2>
+    </header>
+    <h6>
+      간단한 기본 정보(이름, 학년)을 입력한 후 완료 버튼을 누르면 됩니다.<br><br>감염자, 비감염자 자가진단이 분리되어 있으니 본인에게 맞는 버튼을 눌러주세요.
+    </h6>
+    
+    <div>
+      <label for="name">이름:</label>
+      <input type="text" id="name" required>
+      <div id="message"></div>
+    </div>
+    <div>
+      <label for="grade">학년:</label>
+      <select id="grade" required>
+        <option value="1">1학년</option>
+        <option value="2">2학년</option>
+        <option value="3">3학년</option>
+      </select>
+    </div>
+    
+    <button id="completionButton" class="buttonchecks1" onclick="toggleSymptomButtons()" style="width: 150px; height: 50px; font-size: 20px; display: block; margin: 20px auto;">
+      <img src="https://cdn-icons-png.flaticon.com/512/75/75781.png" alt="Image" style="width: 20px; height: 20px; object-fit: cover; border-radius: 50%; margin-right: 5px;">완료
+    </button>
+    
+    <div id="symptomButtons" style="display: none;">
+      <button class="buttonchecks2" onclick="goNextSymptom()">
+        <img src="https://cdn-icons-png.flaticon.com/512/263/263147.png" alt="Image" style="width: 20px; height: 20px; object-fit: cover; border-radius: 50%; margin-right: 5px;">
+        확진자 자가진단
+      </button>
+
+      <button class="buttonchecks1" onclick="goNextNoSymptom()">
+        <img src="https://cdn-icons-png.flaticon.com/512/263/263147.png" alt="Image" style="width: 20px; height: 20px; object-fit: cover; border-radius: 50%; margin-right: 5px;">
+        비확진자 자가진단
+      </button>
+      <br>
+    </div>
+    <img src="./정1.PNG" alt="ㅁㄴㅇㄹ" style="width: 486px; height: 536px;">
+    <img src="./정2.PNG" alt="ㅁㄴㅇㄹ" style="width: 644px; height: 536px;">
+    <div class="animated-title">
+      <div class="track">
+        <div class="content">어제의 청운 확진자 수: / 오늘의 청운 확진자 수: -- / 학년 별 확진자 수: 1학년(-명) 2학년(-명) 3학년(-명)</div>
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- 장면2 확진자 설문지 부분 -->
+  <div id="scene2" class="scene scene2" style="display: none;">
+    <header>
+      <h2 style="text-align: center;">확진자 자가진단</h2>
+    </header>
+    <table style="margin: 0 auto;">
+      <tr>
+        <td style="text-align: center;">Q1. 현재 컨디션 정도는 어떠한가요?</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">
+          <button id="q1Option1" class="answer-button" onclick="toggleAnswer(this, 'q1')">건강함(피로를 느끼지 못함)</button>
+          <button id="q1Option2" class="answer-button" onclick="toggleAnswer(this, 'q1')">약간의 피로(일상생활에 문제가 발생하지 않음)</button>
+          <button id="q1Option3" class="answer-button" onclick="toggleAnswer(this, 'q1')">큰 피로(수업시간에 집중하기 어려울 정도)</button>
+          <button id="q1Option4" class="answer-button" onclick="toggleAnswer(this, 'q1')">매우 피로(컨디션 회복이 안될 정도)</button>
+          <button id="q1Option5" class="answer-button" onclick="toggleAnswer(this, 'q1')">심각한 피로(다른 질병 발생)</button>
+        </td>
+      </tr>
+    </table>
+  
+    <table style="margin: 0 auto;">
+      <tr>
+        <td style="text-align: center;">Q2. 자가격리를 현재 며칠째 하고 있나요?</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">
+          <button id="q2Option1" class="answer-button" onclick="toggleAnswer(this, 'q2')">1일째</button>
+          <button id="q2Option2" class="answer-button" onclick="toggleAnswer(this, 'q2')">2일째</button>
+          <button id="q2Option3" class="answer-button" onclick="toggleAnswer(this, 'q2')">3일째</button>
+          <button id="q2Option4" class="answer-button" onclick="toggleAnswer(this, 'q2')">4일째 이상</button>
+        </td>
+      </tr>
+    </table>
+
+    <button class="buttonback" onclick="goBack()" style="width: 150px; height: 50px; font-size: 20px; display: block; margin: 20px auto;">
+      <img src="https://cdn-icons-png.flaticon.com/512/13/13964.png" alt="Image" style="width: 20px; height: 20px; object-fit: cover; border-radius: 50%; margin-right: 5px;">이전
+    </button>
+    <button class="buttondone" onclick="gotoNext1()" style="width: 150px; height: 50px; font-size: 20px; display: block; margin: 20px auto;">
+      <img src="https://cdn-icons-png.flaticon.com/512/75/75781.png" alt="Image" style="width: 20px; height: 20px; object-fit: cover; border-radius: 50%; margin-right: 5px;">완료
+    </button>
+
+  </div>
+
+  <!-- 장면3 비확진자 설문지 부분 -->
+  <div id="scene3" class="scene scene3" style="display: none;">
+    <header>
+      <h2 style="text-align: center;">비확진자 자가진단</h2>
+    </header>
+    <table style="margin: 0 auto;">
+      <tr>
+        <td style="text-align: center;">Q1. 코로나바이러스-19 바이러스 감염 횟수는?</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">
+          <button id="1q1Option1" class="answer-button" onclick="toggleAnswer(this, 'q1')">0회(없음)</button>
+          <button id="1q1Option2" class="answer-button" onclick="toggleAnswer(this, 'q1')">1회</button>
+          <button id="1q1Option3" class="answer-button" onclick="toggleAnswer(this, 'q1')">2회</button>
+          <button id="1q1Option4" class="answer-button" onclick="toggleAnswer(this, 'q1')">3회</button>
+          <button id="1q1Option5" class="answer-button" onclick="toggleAnswer(this, 'q1')">4회 이상</button>
+        </td>
+      </tr>
+    </table>
+    <br>
+
+    <table style="margin: 0 auto;">
+      <tr>
+        <td style="text-align: center;">Q2. 열이 37.5도 이상인가요?(예 선택 시, 사진 첨부)</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">
+          <div>
+            <button id="1q2Option1" class="answer-button" onclick="toggleAnswer(this, 'q2'); showTemperatureInput()">예</button>
+            <button id="1q2Option2" class="answer-button" onclick="toggleAnswer(this, 'q2'); hideTemperatureInput()">아니오</button>
+          </div>
+          <div id="temperatureInput" style="display: none;">
+            <label for="name">체온 측정 사진:</label>
+            <input type="file" id="temperature" required>
+            <div id="message"></div>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br>
+
+    <table style="margin: 0 auto;">
+      <tr>
+        <td style="text-align: center;">Q3. 오한 증상이 있나요?</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">
+          <div>
+            <button id="1q3Option1" class="answer-button" onclick="toggleAnswer(this, 'q3')">예</button>
+            <button id="1q3Option2" class="answer-button" onclick="toggleAnswer(this, 'q3')">아니오</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br>
+
+    <table style="margin: 0 auto;">
+      <tr>
+        <td style="text-align: center;">Q4. 구토 및 메스꺼움 증상이 있나요?</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">
+          <div>
+            <button id="1q4Option1" class="answer-button" onclick="toggleAnswer(this, 'q4')">예</button>
+            <button id="1q4Option2" class="answer-button" onclick="toggleAnswer(this, 'q4')">아니오</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br>
+
+    <table style="margin: 0 auto;">
+      <tr>
+        <td style="text-align: center;">Q5. 기침 증상이 있나요?</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">
+          <div>
+            <button id="1q5Option1" class="answer-button" onclick="toggleAnswer(this, 'q5')">예</button>
+            <button id="1q5Option2" class="answer-button" onclick="toggleAnswer(this, 'q5')">아니오</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br>
+
+    <table style="margin: 0 auto;">
+      <tr>
+        <td style="text-align: center;">Q6. 숨가쁨 및 호흡곤란 증상이 있나요?</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">
+          <div>
+            <button id="1q6Option1" class="answer-button" onclick="toggleAnswer(this, 'q6')">예</button>
+            <button id="1q6Option2" class="answer-button" onclick="toggleAnswer(this, 'q6')">아니오</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <br>
+
+    <table style="margin: 0 auto;">
+      <tr>
+        <td style="text-align: center;">Q7. 현재 컨디션 정도는 어떠한가요?</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">
+          <button id="1q7Option1" class="answer-button" onclick="toggleAnswer(this, 'q7')">건강함(피로를 느끼지 못함)</button>
+          <button id="1q7Option2" class="answer-button" onclick="toggleAnswer(this, 'q7')">약간의 피로(일상생활에 문제가 발생하지 않음)</button>
+          <button id="1q7Option3" class="answer-button" onclick="toggleAnswer(this, 'q7')">큰 피로(수업시간에 집중하기 어려울 정도)</button>
+          <button id="1q7Option4" class="answer-button" onclick="toggleAnswer(this, 'q7')">매우 피로(컨디션 회복이 안될 정도)</button>
+          <button id="1q7Option5" class="answer-button" onclick="toggleAnswer(this, 'q7')">심각한 피로(다른 질병 발생)</button>
+        </td>
+      </tr>
+    </table>
+    <br>
+    
+    <table style="margin: 0 auto;">
+      <tr>
+        <td style="text-align: center;">Q8. 접종을 완료한 백신을 모두 선택해주세요.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">
+          <button id="1q8Option1" class="answer-button" onclick="toggleAnswer(this, 'q8')">코로나-19</button>
+          <button id="1q8Option2" class="answer-button" onclick="toggleAnswer(this, 'q8')">독감 (인플루엔자)</button>
+          <button id="1q8Option3" class="answer-button" onclick="toggleAnswer(this, 'q8')">폐렴구균</button>
+          <button id="1q8Option4" class="answer-button" onclick="toggleAnswer(this, 'q8')">결핵</button>
+          <button id="1q8Option5" class="answer-button" onclick="toggleAnswer(this, 'q8')">B형 간염</button>
+          <button id="1q8Option6" class="answer-button" onclick="toggleAnswer(this, 'q8')">파상풍</button>
+          <button id="1q8Option7" class="answer-button" onclick="toggleAnswer(this, 'q8')">기타</button>
+        </td>
+      </tr>
+    </table>
+
+    <table style="margin: 0 auto;">
+      <tr>
+        <td style="text-align: center;">Q9. 코로나19를 예방하기 위해 실행했던 행동들을 모두 선택해주세요.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">
+          <button id="1q9Option1" class="answer-button" onclick="toggleAnswer(this, 'q9')">손을 자주(1일 10회 이상) 씻음</button>
+          <button id="1q9Option2" class="answer-button" onclick="toggleAnswer(this, 'q9')">자리정돈(책상을 소독티슈로 닦기)을 완료함</button>
+          <button id="1q9Option3" class="answer-button" onclick="toggleAnswer(this, 'q9')">마스크를 항상 착용함</button>
+          <button id="1q9Option4" class="answer-button" onclick="toggleAnswer(this, 'q9')">타인과의 접촉을 줄이기 위해 노력함</button>
+          <button id="1q9Option5" class="answer-button" onclick="toggleAnswer(this, 'q9')">환기를 자주 함</button>
+        </td>
+      </tr>
+    </table>
+
+    <table style="margin: 0 auto;">
+      <tr>
+        <td style="text-align: center;">Q10. 자신의 하루 전 활동 범위를 선택해주세요.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;">
+          <button id="1q10Option1" class="answer-button" onclick="toggleAnswer(this, 'q10')">학교(교실)</button>
+          <button id="1q10Option2" class="answer-button" onclick="toggleAnswer(this, 'q10')">기숙사</button>
+          <button id="1q10Option3" class="answer-button" onclick="toggleAnswer(this, 'q10')">매점</button>
+          <button id="1q10Option4" class="answer-button" onclick="toggleAnswer(this, 'q10')">체육관</button>
+          <button id="1q10Option5" class="answer-button" onclick="toggleAnswer(this, 'q10')">운동장</button>
+        </td>
+      </tr>
+    </table>
+
+    <button class="buttonback" onclick="goBack()" style="width: 150px; height: 50px; font-size: 20px; display: block; margin: 20px auto;">
+      <img src="https://cdn-icons-png.flaticon.com/512/13/13964.png" alt="Image" style="width: 20px; height: 20px; object-fit: cover; border-radius: 50%; margin-right: 5px;">이전
+    </button>
+    <button class="buttondone" onclick="gotoNext2()" style="width: 150px; height: 50px; font-size: 20px; display: block; margin: 20px auto;">
+      <img src="https://cdn-icons-png.flaticon.com/512/75/75781.png" alt="Image" style="width: 20px; height: 20px; object-fit: cover; border-radius: 50%; margin-right: 5px;">완료
+    </button>
+  </div>
+
+  <!-- 장면4 확진자 결과 부분 -->
+  <div id="scene4" class="scene scene4" style="display: none;">
+    <h2>결과</h2>
+    <h3>감사합니다. 쾌유를 바랍니다!</h3>
+
+    <button class="buttonback" onclick="goBack()" style="width: 150px; height: 50px; font-size: 20px; display: block; margin: 20px auto;">
+      <img src="https://cdn-icons-png.flaticon.com/512/13/13964.png" alt="Image" style="width: 20px; height: 20px; object-fit: cover; border-radius: 50%; margin-right: 5px;">이전
+    </button>
+  </div>
+
+  <!-- 장면5 비확진자 결과 부분 -->
+  <div id="scene5" class="scene scene5" style="display: none;">
+    <h2>결과</h2>
+    <h3>자가진단이 제출되었습니다. 오늘 하루도 힘내세요!</h3>
+
+    <button class="buttonback" onclick="goBack()" style="width: 150px; height: 50px; font-size: 20px; display: block; margin: 20px auto;">
+      <img src="https://cdn-icons-png.flaticon.com/512/13/13964.png" alt="Image" style="width: 20px; height: 20px; object-fit: cover; border-radius: 50%; margin-right: 5px;">이전
+    </button>
+  </div>
+
+  <script>
+    var selectedAnswers = {};
+    var surveyData = []; 
+    var selectedAnswers = {};
+    function toggleAnswer(question, answer) {
+    var yesButton = document.getElementById(question + 'Yes');
+    var noButton = document.getElementById(question + 'No');
+
+    var nameInput = document.getElementById('name');
+    var gradeInput = document.getElementById('grade');
+    var completionButton = document.getElementById('completionButton');
+    var symptomButtons = document.getElementById('symptomButtons');
+
+    if (nameInput.value && gradeInput.value) {
+      symptomButtons.style.display = 'block';
+      completionButton.style.display = 'none';
+    }
+
+    if (answer === 'Yes') {
+      yesButton.disabled = true;
+      noButton.disabled = false;
+      selectedAnswers[question] = 'Yes';
+      yesButton.style.fontWeight = 'bold'; // Add bold style to selected button
+      noButton.style.fontWeight = 'normal'; // Remove bold style from unselected button
+    } else if (answer === 'No') {
+      yesButton.disabled = false;
+      noButton.disabled = true;
+      selectedAnswers[question] = 'No';
+      yesButton.style.fontWeight = 'normal'; // Remove bold style from unselected button
+      noButton.style.fontWeight = 'bold'; // Add bold style to selected button
+    }
+  }
+    // function changeScene() {
+    //   var scene1 = document.getElementById('scene1');
+    //   var scene2 = document.getElementById('scene2');
+  
+    //   scene1.style.display = 'none';
+    //   scene2.style.display = 'block';
+    // }
+
+    function showTemperatureInput() {
+      document.getElementById("temperatureInput").style.display = "block";
+    }
+
+    function hideTemperatureInput() {
+      document.getElementById("temperatureInput").style.display = "none";
+    }
+
+    function goBack() { //2/3/4 -> 1
+      var scene1 = document.getElementById('scene1');
+      var scene2 = document.getElementById('scene2');
+      var scene3 = document.getElementById('scene3');
+      var scene4 = document.getElementById('scene4');
+      var scene5 = document.getElementById('scene5');
+  
+      scene1.style.display = 'block';
+      scene2.style.display = 'none';
+      scene3.style.display = 'none';
+      scene4.style.display = 'none';
+      scene5.style.display = 'none';
+  
+      // Reset selected answers
+      selectedAnswers = {};
+  
+      // Enable all buttons
+      var buttons = document.getElementsByClassName('answer');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = false;
+      }
+    }
+
+    function gotoNext1() { //->4
+      var nameInput = document.getElementById('name');
+
+      console.log(nameInput.value + '(확진자 자가진단 완료');
+
+      var scene1 = document.getElementById('scene1');
+      var scene2 = document.getElementById('scene2');
+      var scene3 = document.getElementById('scene3');
+      var scene4 = document.getElementById('scene4');
+      var scene5 = document.getElementById('scene5');
+  
+      scene1.style.display = 'none';
+      scene2.style.display = 'none';
+      scene3.style.display = 'none';
+      scene4.style.display = 'block';
+      scene5.style.display = 'none';
+  
+      // Reset selected answers
+      selectedAnswers = {};
+  
+      // Enable all buttons
+      var buttons = document.getElementsByClassName('answer');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = false;
+      }
+    }
+
+    function gotoNext2() { //->5
+      var nameInput = document.getElementById('name');
+
+      console.log(nameInput.value + '(비확진자 자가진단 완료');
+
+      var scene1 = document.getElementById('scene1');
+      var scene2 = document.getElementById('scene2');
+      var scene3 = document.getElementById('scene3');
+      var scene4 = document.getElementById('scene4');
+      var scene5 = document.getElementById('scene5');
+  
+      scene1.style.display = 'none';
+      scene2.style.display = 'none';
+      scene3.style.display = 'none';
+      scene4.style.display = 'none';
+      scene5.style.display = 'block';
+  
+  
+      // Reset selected answers
+      selectedAnswers = {};
+  
+      // Enable all buttons
+      var buttons = document.getElementsByClassName('answer');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = false;
+      }
+    }
+
+    let currentQ1Answer = null;
+    let currentQ2Answer = null;
+    let currentQ3Answer = null;
+    let currentQ4Answer = null;
+    let currentQ5Answer = null;
+    let currentQ6Answer = null;
+    let currentQ7Answer = null;
+
+    function toggleAnswer(button, question) {
+
+      if (question === 'q1') {
+        if (currentQ1Answer) {
+          currentQ1Answer.classList.remove('active');
+        }
+        currentQ1Answer = button;
+      } 
+      else if (question === 'q2') {
+        if (currentQ2Answer) {
+          currentQ2Answer.classList.remove('active');
+        }
+        currentQ2Answer = button;
+      }
+      else if (question === 'q3') {
+        if (currentQ3Answer) {
+          currentQ3Answer.classList.remove('active');
+        }
+        currentQ3Answer = button;
+      }
+      else if (question === 'q4') {
+        if (currentQ4Answer) {
+          currentQ4Answer.classList.remove('active');
+        }
+        currentQ4Answer = button;
+      }
+      else if (question === 'q5') {
+        if (currentQ5Answer) {
+          currentQ5Answer.classList.remove('active');
+        }
+        currentQ5Answer = button;
+      }
+      else if (question === 'q6') {
+        if (currentQ6Answer) {
+          currentQ6Answer.classList.remove('active');
+        }
+        currentQ6Answer = button;
+      }
+      else if (question === 'q7') {
+        if (currentQ7Answer) {
+          currentQ7Answer.classList.remove('active');
+        }
+        currentQ7Answer = button;
+      }
+      button.classList.toggle('active');
+    }
+
+    function toggleSymptomButtons() {
+    var nameInput = document.getElementById('name');
+    var gradeInput = document.getElementById('grade');
+    var symptomButtons = document.getElementById('symptomButtons');
+    if (nameInput.value && gradeInput.value) {
+      symptomButtons.style.display = 'block';
+    }
+    }
+
+    function goNextSymptom() { //감염자 자가진단으로 이동
+    var scene1 = document.getElementById('scene1');
+    var scene2 = document.getElementById('scene2');
+    var scene3 = document.getElementById('scene3');
+    var scene4 = document.getElementById('scene4');
+    var scene5 = document.getElementById('scene5');
+    var resultText = document.getElementById('resultText');
+  
+    scene1.style.display = 'none';
+    scene2.style.display = 'block';
+    scene3.style.display = 'none';
+    scene4.style.display = 'none';
+    scene5.style.display = 'none';
+    }
+
+    function goNextNoSymptom() { //감염자 자가진단으로 이동
+    var scene1 = document.getElementById('scene1');
+    var scene2 = document.getElementById('scene2');
+    var scene3 = document.getElementById('scene3');
+    var scene4 = document.getElementById('scene4');
+    var scene5 = document.getElementById('scene5');
+    var resultText = document.getElementById('resultText');
+  
+    scene1.style.display = 'none';
+    scene2.style.display = 'none';
+    scene3.style.display = 'block';
+    scene4.style.display = 'none';
+    }
+
+    const nameInput = document.getElementById('name');
+    const messageContainer = document.getElementById('message');
+
+    nameInput.addEventListener('input', function() {
+      const name = nameInput.value;
+      messageContainer.textContent = '';
+        var but = document.getElementById('completionButton');
+        but.style.display = 'block';
+      if (name === '강규빈' || 
+          name === '강금비' || 
+          name === '강동우' ||
+          name === '강온유' ||
+          name === '강유림' ||
+          name === '강주승' ||
+          name === '강주연' ||
+          name === '강효진' ||
+          name === '경하은' ||
+          name === '고대영' ||
+          name === '고명찬' ||
+          name === '곽동현' ||
+          name === '구하음' ||
+          name === '권도형' ||
+          name === '권하연' ||
+          name === '권혁인' ||
+          name === '길승원' ||
+          name === '길희원' ||
+          name === '김가은' ||
+          name === '김다정' ||
+          name === '김도현' ||
+          name === '김동준' ||
+          name === '김동현' ||
+          name === '김동휘' ||
+          name === '김랑화' ||
+          name === '김리원' || 
+          name === '김미강' ||
+          name === '김민규' ||
+          name === '김민솔' ||
+          name === '김민승' ||
+          name === '김민재' ||
+          name === '김민주' ||
+          name === '김민지' ||
+          name === '김민지' ||
+          name === '김민혁' ||
+          name === '김보민' ||
+          name === '김상윤' ||
+          name === '김서아' ||
+          name === '김서현' ||
+          name === '김세연' ||
+          name === '김세원' ||
+          name === '김시헌' ||
+          name === '김시훈' ||
+          name === '김영일' ||
+          name === '김예찬' ||
+          name === '김예찬' ||
+          name === '김윤성' ||
+          name === '김재승' ||
+          name === '김주원' ||
+          name === '김주형' ||
+          name === '김지안' ||
+          name === '김지유' ||
+          name === '김지홍' || 
+          name === '김채원' ||
+          name === '김태건' ||
+          name === '김태영' ||
+          name === '김태현' ||
+          name === '김하원' ||
+          name === '김한나' ||
+          name === '김한민' ||
+          name === '김현석' ||
+          name === '김희원' ||
+          name === '나유하' ||
+          name === '나혜민' ||
+          name === '노현중' ||
+          name === '노희우' ||
+          name === '류지현' ||
+          name === '문소정' ||
+          name === '박강인' ||
+          name === '박근영' ||
+          name === '박민서' ||
+          name === '박상준' ||
+          name === '박서경' ||
+          name === '박서영' ||
+          name === '박서인' ||
+          name === '박예린' ||
+          name === '박우진' ||
+          name === '박유찬' ||
+          name === '박유현' ||
+          name === '박종우' ||
+          name === '박준서' ||
+          name === '박지수' ||
+          name === '박진솔' ||
+          name === '박하은' ||
+          name === '박한결' ||
+          name === '변정현' ||
+          name === '서민상' ||
+          name === '서윤호' || 
+          name === '서준혁' ||
+          name === '석인성' ||
+          name === '성강민' ||
+          name === '손수민' ||
+          name === '신주환' ||
+          name === '심준원' ||
+          name === '양고은' ||
+          name === '양지헌' ||
+          name === '엄강은' ||
+          name === '예윤지' ||
+          name === '오승준' ||
+          name === '오우주' ||
+          name === '옥가은' ||
+          name === '옥성목' ||
+          name === '우시연' ||
+          name === '원동규' ||
+          name === '윤성준' ||
+          name === '윤수현' ||
+          name === '윤영서' ||
+          name === '윤진주' ||
+          name === '이다은' ||
+          name === '이다은' ||
+          name === '이다혜' ||
+          name === '이도윤' ||
+          name === '이동훈' ||
+          name === '이명주' ||
+          name === '이상현' ||
+          name === '이서윤' ||
+          name === '이서진' ||
+          name === '이세현' ||
+          name === '이소민' ||
+          name === '이수아' ||
+          name === '이승민' ||
+          name === '이아란' ||
+          name === '이아민' ||
+          name === '이예서' || 
+          name === '이유정' ||
+          name === '이은채' ||
+          name === '이준서' ||
+          name === '이지원' ||
+          name === '이지한' ||
+          name === '이진호' ||
+          name === '이초린' ||
+          name === '이치범' ||
+          name === '이한희' ||
+          name === '이현수' ||
+          name === '이호현' ||
+          name === '임가빈' ||
+          name === '임규현' ||
+          name === '임준영' ||
+          name === '임희원' ||
+          name === '장보근' ||
+          name === '장한음' ||
+          name === '전문수' ||
+          name === '전승은' ||
+          name === '전이나' ||
+          name === '전주현' ||
+          name === '전주형' ||
+          name === '전진솔' ||
+          name === '전현규' ||
+          name === '정동우' ||
+          name === '정서인' ||
+          name === '정수현' ||
+          name === '정시윤' ||
+          name === '정예린' ||
+          name === '정유림' ||
+          name === '정은재' ||
+          name === '정정현' ||
+          name === '정찬혁' ||
+          name === '정채희' ||
+          name === '정하린' || 
+          name === '정하음' ||
+          name === '정현수' ||
+          name === '정현준' ||
+          name === '조수정' ||
+          name === '조재우' ||
+          name === '지예인' ||
+          name === '지은우' ||
+          name === '채현찬' ||
+          name === '최민준' ||
+          name === '최석현' ||
+          name === '최선유' ||
+          name === '최여은' ||
+          name === '최예령' ||
+          name === '최유정' ||
+          name === '최윤서' ||
+          name === '최윤하' ||
+          name === '최지은' ||
+          name === '최혜지' ||
+          name === '표하민' ||
+          name === '하신욱' ||
+          name === '한승수' ||
+          name === '한은영' ||
+          name === '한지민' ||
+          name === '한지은' ||
+          name === '홍유주' ||
+          name === '황서연' ||
+          name === '황유은') {
+        messageContainer.textContent = 'HCU 학생분들 안녕하세요!';
+        var but = document.getElementById('completionButton');
+        but.style.display = 'display';
+      }
+      else if (name === '서준식') {
+        messageContainer.textContent = '난 독 증';
+        var but = document.getElementById('completionButton');
+        but.style.display = 'display';
+      } 
+      else if (name === '카나데') {
+        messageContainer.textContent = '설마 이걸 치는 사람이 있을까 생각했다 ㅋㅋㅋ';
+        var but = document.getElementById('completionButton');
+        but.style.display = 'none';
+      } 
+      else if (name === '이스터에그' || name === 'EasterEgg' || name === 'easteregg') {
+        messageContainer.textContent = '네. 생각보다 아무 이름 치면 나오는 이스터에그가 있답니다... 이거 정주영학 팀원 중 아무에게도 말 안한건데 쉿';
+        var but = document.getElementById('completionButton');
+        but.style.display = 'none';
+      } 
+      else if (name === '김재영') {
+        messageContainer.textContent = '말이 안돼요! 미안해요!';
+        var but = document.getElementById('completionButton');
+        but.style.display = 'none';
+      } 
+      else if (name === '권기수') {
+        messageContainer.textContent = '니 지금 뭐하는데~!';
+        var but = document.getElementById('completionButton');
+        but.style.display = 'none';
+      } 
+      else if (name === '스즈메') {
+        messageContainer.textContent = '스즈메노... 코지마리..!';
+        var but = document.getElementById('completionButton');
+        but.style.display = 'none';
+      } 
+      else if (name === '주승찬') {
+        messageContainer.textContent = '걔 전학간거 아닌교';
+        var but = document.getElementById('completionButton');
+        but.style.display = 'none';
+      } 
+      else if (name === '현청운') {
+        messageContainer.textContent = '10640';
+        var but = document.getElementById('completionButton');
+        but.style.display = 'none';
+      } 
+      else if (name === '정주영') {
+        messageContainer.textContent = '감사합니다 정주영님';
+        
+        var but = document.getElementById('completionButton');
+        but.style.display = 'none';
+      } 
+      else {
+        messageContainer.textContent = '';
+        var but = document.getElementById('completionButton');
+        but.style.display = 'block';
+      }
+    });
+
+  //   function toggleSymptomButtons() {
+  //   var symptomButtons = document.getElementsByClassName('buttonchecks1');
+  //   for (var i = 0; i < symptomButtons.length; i++) {
+  //     symptomButtons[i].style.display = 'block';
+  //   }
+
+  //   var nonSymptomButtons = document.getElementsByClassName('buttonchecks2');
+  //   for (var i = 0; i < nonSymptomButtons.length; i++) {
+  //     nonSymptomButtons[i].style.display = 'block';
+  //   }
+  // }
+
+  //   // Reset selected answers
+  //   selectedAnswers = {};
+  
+  //   // Enable all buttons
+  //   var buttons = document.getElementsByClassName('answer');
+  //   for (var i = 0; i < buttons.length; i++) {
+  //     buttons[i].disabled = false;
+  //   }
+  
+  //   // Determine the result based on selected answers
+
+  // }
+  </script>
+
+</body>
+</html>
