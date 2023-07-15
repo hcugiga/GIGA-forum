@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 2</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+        body {
+            background: linear-gradient(to bottom, #000000, rgb(19, 29, 88));
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .letter-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .letter {
+            font-size: 200px;
+            color: white;
+            opacity: 0;
+            animation: bounce 1s infinite, hue 4s 1s linear infinite normal;
+            letter-spacing: 20px;
+            font-family: 'Oswald', sans-serif;
+            
+        }
+
+        
+        .letter:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .letter:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .letter:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-50px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes hue{
+            0%{
+                opacity: 1;
+                filter: hue-rotate(0deg);
+            }
+            25%{
+                opacity: 0.2;
+                filter: hue-rotate(-30deg);
+            }
+            100%{
+                opacity: 1;
+                filter: hue-rotate(0deg);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="letter-container">
+            <span class="letter">G</span>
+            <span class="letter">I</span>
+            <span class="letter">G</span>
+            <span class="letter">A</span>
+        </div>
+    </div>
+</body>
+</html>

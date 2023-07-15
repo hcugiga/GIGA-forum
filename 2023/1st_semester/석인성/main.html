@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10112 석인성</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+        body{
+            font-family: 'Black Han Sans', sans-serif;
+            text-align: center;
+            color: #fff;
+            background: linear-gradient(to bottom, #000000, rgb(255, 255, 255));
+            background-size: 400% 400%;
+        }
+        .giga-animation {
+            margin-top: 300px;
+            letter-spacing: 20px;
+        }
+
+        .giga { 
+            font-size: 1500%;
+            opacity: 0;
+            animation: fade-in 7s forwards;
+        }
+
+        .circle-button {
+            margin-top: 20px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            text-align: center;
+            background-color: #f7f7f7;
+            cursor: pointer;
+            border: 5px solid;
+            font-size: 40px;
+            box-shadow: 3px 3px 0;
+            color: linear-gradient(to bottom, #000000, rgb(255, 255, 255));
+            font-family: 'Nanum Pen Script', cursive;
+            opacity: 0;
+            animation: show-button 0s forwards;
+            animation-delay: 4s;
+        }
+        @keyframes fade-in {
+             0% {
+                opacity: 0;
+             }
+             100% { 
+                opacity: 1;
+             }
+            }
+
+        @keyframes show-button {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+    
+</head> 
+<body>
+    <div class="giga-animation">
+        <span class="giga">G</span>
+        <span class="giga">I</span>
+        <span class="giga">G</span>
+        <span class="giga">A</span>
+        <div class="button">
+            <a href="sub1.html">
+                <button class="circle-button"><b>click</b></button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
