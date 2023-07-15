@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GIGA 학술제</title>
     <meta http-equiv="Publisher" content="GIGA" />
-    <meta property="og:title" content="2022 GIGA 학술제 아카이브" />
-    <meta property="og:description" content="GIGA 학술제 아카이브페이지 입니다." />
+    <meta property="og:title" content="2022 GIGA 1학기 학술제" />
+    <meta
+     property="og:description"
+     content="GIGA 학술제 자료입니다."
+    />
     <link rel="apple-touch-icon" sizes="57x57" href="logo/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="logo/apple-icon-60x60.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="logo/apple-icon-72x72.png" />
@@ -17,7 +20,12 @@
     <link rel="apple-touch-icon" sizes="144x144" href="logo/apple-icon-144x144.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="logo/apple-icon-152x152.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="logo/apple-icon-180x180.png" />
-    <link rel="icon" type="logo/png" sizes="192x192" href="../logo/android-icon-192x192.png" />
+    <link
+     rel="icon"
+     type="logo/png"
+     sizes="192x192"
+     href="../logo/android-icon-192x192.png"
+    />
     <link rel="icon" type="logo/png" sizes="32x32" href="logo/favicon-32x32.png" />
     <link rel="icon" type="logo/png" sizes="96x96" href="logo/favicon-96x96.png" />
     <link rel="icon" type="logo/png" sizes="16x16" href="logo/favicon-16x16.png" />
@@ -25,75 +33,83 @@
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-Tilelogo" content="logo/ms-icon-144x144.png" />
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
       body {
-        background-color: #2e4866;
+        background-color: #bdcbff;
         user-select: none;
       }
       header {
         text-align: center;
-        color: #fff;
+        color: navy;
         font-size: 1.5vw;
         font-weight: 100;
-        border-bottom: 5px solid;
-        padding: 15px 0 10px;
+        border-bottom: 5px solid navy;
+        padding: 40px 0 10px;
+      }
+      header > a {
+        font-family: 'Black Han Sans', sans-serif;
         font-size: 4.5vw;
         font-weight: bold;
-        padding-bottom: 2vw;
+        text-shadow: 2px 2px 3px white;
+      }
+      span {
+        font-size: 1vw;
       }
       ul {
         list-style: none;
-        border-spacing: 5vw;
-        margin-top: 5vw;
-        padding-left: 0;
       }
-      li {
-        border: 4px solid #000;
+      table {
+        border-spacing: 5vw;
+        margin: -2vh auto 0;
+        font-family: 'Do Hyeon', sans-serif;
+      }
+      [class*="num"] {
+        border: 3px solid navy;
         border-radius: 15px;
-        background-color: #fff9f9;
+        background-color: white;
         text-align: center;
+        text-shadow: 2px 2px 3px #bdcbff;
         font-size: 3vw;
         font-weight: bolder;
         transition-duration: 0.5s;
-        margin-bottom: 3vw;
-        padding-top: 2vw;
-        padding-bottom: 2vw;
-        width: 35vw;
-        margin-left: auto;
-        margin-right: auto;
       }
-      a {
+      td {
+        height: 13vw;
+        width: 13vw;
+        padding: 0;
+      }
+      [class*="num"]:hover {
+        transform: scale(1.1);
+      }
+      td > a {
         color: black;
         text-decoration: none;
       }
-      .box {
-        font-size: 5vw;
-        font-weight: bold;
-        color: white;
-        text-align: center;
-        border: 4px solid #ffffff;
-        border-radius: 25px;
-        width: 50vw;
-        margin: 2vw auto 2vw auto;
-        padding-top: 2vw;
-        padding-bottom: 2vw;
+      div{
+        width: 100%;
+        height: 100%;
       }
     </style>
   </head>
   <body>
     <header>
-      <span>GIGA 학술제</span>
+      <a>GIGA 2023 상반기 학술제</a>
+      <br>
+      <br>
+      <span>made by 20412 김채형</span>
     </header>
-    <ul>
-      <div class="box">
-        <div style="margin-bottom: 2vw">20기</div>
-        <a href="2022/1st_semester/index.html"><li>2022 1학기</li></a>
-        <a href="2022/2nd_semester/index.html"><li>2022 2학기</li></a>
-      </div>
-      <div class="box">
-        <div style="margin-bottom: 2vw">21기</div>
-        <a href="2023/1st_semester/index.html"><li>2023 1학기</li></a>
-        <a onclick="alert('미완성')"><li>2023 2학기</li></a>
-      </div>
-    </ul>
+    <table>
+      <tr class="tr1">
+        <td class="num1" onclick="window.open('석인성/석인성_1.html',',')">10112<br />석인성</td>
+        <td class="num2" onclick="window.open('이치범/이치범.html',',')">10425<br />이치범</td>
+        <td class="num3" onclick="window.open('김미강/김미강.html',',')">10506<br />김미강</td>
+      </tr>
+      <tr class="tr2">
+        <td class="num4" onclick="window.open('이아민/이아민_1.html',',')">10522<br />이아민</td>
+        <td class="num5" onclick="window.open('김지홍/김지홍.html',',')">10608<br />김지홍</td>
+        <td class="num6" onclick="window.open('오우주/index.html',',')">10615<br />오우주</td>
+      </tr>
+    </table>
   </body>
 </html>
