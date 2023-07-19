@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+body {
+    background-color: #bdcbff;
+    user-select: none;
+    text-align: center;
+}
+header {
+    color: navy;
+    font-size: 1.5vw;
+    font-weight: 100;
+    border-bottom: 5px solid navy;
+    padding: 40px 0 10px;
+}
+header > a {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 4.5vw;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px white;
+}
+span {
+    font-size: 1vw;
+}
+ul {
+    list-style: none;
+}
+table {
+    border-spacing: 5vw;
+    margin: -2vh auto 0;
+    font-family: 'Do Hyeon', sans-serif;
+}
+[class*="num"] {
+    border: 3px solid navy;
+    border-radius: 15px;
+    background-color: white;
+    text-align: center;
+    text-shadow: 2px 2px 3px #bdcbff;
+    font-size: 3vw;
+    font-weight: bolder;
+    transition-duration: 0.5s;
+}
+td {
+    height: 13vw;
+    width: 13vw;
+    padding: 0;
+}
+[class*="num"]:hover {
+    transform: scale(1.1);
+}
+td > a {
+    color: black;
+    text-decoration: none;
+    }
+div{
+    width: 100%;
+    height: 100%;
+}
