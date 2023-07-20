@@ -7,7 +7,7 @@ nbsp.addEventListener('click', function(){
 
 function clickcount(){
     click++;
-    if (click >= 5){
+    if (click >= 7){
         alert('giga@hcu.hs.kr로 이 화면을 캡쳐해서 보내주시면 선착순 3명에게 선물을!')
         click = 0
     }
